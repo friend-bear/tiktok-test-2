@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HT136R4SQ8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    // URLパラメータを取得する関数
+    function getParameterByName(name) {
+      name = name.replace(/[\[\]]/g, "\\$&");
+      var url = window.location.href;
+      var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    // URLパラメータidを取得
+    var idParam = getParameterByName('id');
+
+    // Google AnalyticsにURLパラメータを送信
+    if (idParam) {
+      gtag('config', 'G-HT136R4SQ8', {
+        'custom_map': { 'dimension1': 'id_param' },
+        'id_param': idParam
+      });
+    } else {
+      gtag('config', 'G-HT136R4SQ8', {
+        'custom_map': { 'dimension1': 'id_param' },
+        'id_param': "idParam is null"
+      });
+    }
+  </script>
+  <script>
+    setTimeout(function () {
+      window.location.href = "https://kddi-tech.com/"; // リダイレクト先のURL
+    }, 300); // 300ミリ秒（0.3秒）後にリダイレクト
+  </script>
+</head>
+
+<body>
+  <p>ページにリダイレクトしています。お待ちください...</p>
+</body>
+
+</html>
